@@ -1,6 +1,6 @@
 import './App.css';
-import { useEffect, useState } from 'react';
-import searchBar from "./components/SearchBar";
+import React, { useEffect, useState } from 'react';
+import SearchBar from "./components/SearchBar";
 import WeatherCard from "./components/WeatherCard";
 
 const API_BASE = "https://api.openweathermap.org/data/2.5/weather";
@@ -8,8 +8,8 @@ const API_BASE = "https://api.openweathermap.org/data/2.5/weather";
 function App() {
 
   const [city, setCity] = useState("Toronto");
-  const [weather, setWeather] = useState("null");
-  const [loading, setLoading] = useState("false");
+  const [weather, setWeather] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const fetchWeather = async (cityName) => {
@@ -52,7 +52,8 @@ function App() {
   return (
     <div className="App">
       <h1 className='app-title'>Weather Now</h1>
-      <searchBar onSearch={handleSearch}/>
+      
+      <SearchBar onSearch={handleSearch}/>
 
       {loading && <p className='info-text'>loading...</p>}
       {error && <p className="error-text">{error}</p>}
